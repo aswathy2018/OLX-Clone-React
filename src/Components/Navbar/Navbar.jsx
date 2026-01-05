@@ -5,10 +5,12 @@ import search from '../../assets/search1.svg'
 import arrow from '../../assets/arrow-down.svg'
 import searchwt from '../../assets/search.svg'
 
-const Navbar = () => {
+
+const Navbar = (props) => {
+  const {toggleModal} = props
   return (
     <div>
-        <nav className="fixed top-0 left-0 z-[9999] w-full bg-red-500 p-2">
+        <nav className="fixed top-0 left-0 z-[9999] w-full bg-blue p-2">
             <img src={logo} alt="" className='w-12'/>
             <div className="relative ml-5">
                 <img src={search} alt="" className="absolute top-4 left-2 w-5"/>
@@ -17,7 +19,7 @@ const Navbar = () => {
                   className="w-[50px] sm:w-[150px] md:w-[250px] lg:w-[270px] p-3 pl-8 pr-8 border-2 border-black rounded-md placeholder:ellipsis focus:outline-none focus:border-teal-300" />
                 <img src={arrow} alt="" className='absolute top-4 right-3 w-5 cursor-pointer'/>
             </div>
-            
+
             <div className="ml-5 mr-2 relative flex-1 main-search">
               <input type="text"
                 placeholder="Find Cars, Mobile Phones, and More..."
@@ -33,6 +35,7 @@ const Navbar = () => {
             <p className="font-bold mr-1 text-sm">English</p>
             <img src={arrow} alt="" className="w-3 cursor-pointer" />
           </div>
+          <p onClick={toggleModal}>Login</p>
         </nav>
     </div>
   )
