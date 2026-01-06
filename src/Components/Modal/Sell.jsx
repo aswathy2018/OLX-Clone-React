@@ -6,6 +6,7 @@ import { addDoc, collection } from 'firebase/firestore'
 import { FetchFromFireStore, fireStore } from '../Firebase/Firebase'
 import fileUpload from '../../assets/fileUpload.svg'
 import loading from '../../assets/loading.gif'
+import close from '../../assets/close.svg'
 
 const Sell = (props) => {
 
@@ -124,15 +125,22 @@ const Sell = (props) => {
   }}>
 
         <ModalBody
-  className="
-    bg-white
-    rounded-md
-    overflow-y-auto
-    max-h-[85vh]
-    p-6
-  "
-  onClick={(e) => e.stopPropagation()}
->
+          className="bg-white
+          rounded-md
+          overflow-y-auto
+          max-h-[85vh]
+          p-6"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <img
+            onClick={() => {
+              toggleModalSell();
+              setImage(null);
+            }}
+            className="w-6 absolute z-10 top-6 right-8 cursor-pointer"
+            src={close}
+            alt=""
+          />
 
                 <div className="p-1 pl-2 pr-2 pb-2">
             <p className="font-bold text-lg mb-3">

@@ -11,7 +11,7 @@ export const ItemContextProvider =({children})=>{
     useEffect(()=>{
         const fetchItemsFromFireStore =async ()=>{
             try {
-                const productsCollection = collection(fireStore,'Products')
+                const productsCollection = collection(fireStore,'products')
                 const productsSnapshot = await getDocs(productsCollection)
                 const productsList =productsSnapshot.docs.map(doc=>({
                     id:doc.id,
