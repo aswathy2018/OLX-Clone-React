@@ -7,16 +7,16 @@ import searchwt from '../../assets/search.svg'
 
 
 const Navbar = (props) => {
-  const {toggleModal} = props
+  const {toggleModal, toggleModalSell} = props
   return (
     <div>
-        <nav className="fixed top-0 left-0 z-[9999] w-full bg-blue p-2">
+        <nav className="fixed top-0 left-0 z-30 w-full bg-[#F5FAFF] border-b border-gray-300 px-4 py-2">
             <img src={logo} alt="" className='w-12'/>
             <div className="relative ml-5">
                 <img src={search} alt="" className="absolute top-4 left-2 w-5"/>
                 <input type="text"
                   placeholder="Search city, area and locality.."
-                  className="w-[50px] sm:w-[150px] md:w-[250px] lg:w-[270px] p-3 pl-8 pr-8 border-2 border-black rounded-md placeholder:ellipsis focus:outline-none focus:border-teal-300" />
+                  className="w-[50px] sm:w-[150px] md:w-[250px] lg:w-[270px] p-3 pl-8 pr-8 border-2 border-black rounded-md placeholder:ellipsis  ocus:outline-none focus:border-teal-300" />
                 <img src={arrow} alt="" className='absolute top-4 right-3 w-5 cursor-pointer'/>
             </div>
 
@@ -36,6 +36,8 @@ const Navbar = (props) => {
             <img src={arrow} alt="" className="w-3 cursor-pointer" />
           </div>
           <p onClick={toggleModal}>Login</p>
+          <br/>
+          <p onClick={toggleModalSell}>Sell</p>
         </nav>
     </div>
   )
