@@ -130,9 +130,6 @@ const Login = ({ toggleModal, status }) => {
                         </div>
                     </div>
                 </ModalBody>
-                <div>
-                    <p>This is your modal</p>
-                </div>
             </Modal>
         </div>
     )

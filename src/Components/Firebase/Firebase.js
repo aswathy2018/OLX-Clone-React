@@ -18,9 +18,6 @@ const provider = new GoogleAuthProvider();
 const storage = getStorage()
 const fireStore = getFirestore()
 
-
-
-
 const FetchFromFireStore = async() => {
     try {
 

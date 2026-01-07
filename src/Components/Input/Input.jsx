@@ -1,17 +1,22 @@
 import React from 'react'
 
-export const Input = (props) => {
-    const {setInput, placeholder} = props
+export const Input = ({ value, setInput, placeholder, error }) => {
   return (
     <div className='pt-2 w-full relative'>
       <input
-        onChange={(event) => setInput(event.target.value)} type = "text" id = "title"
-        className='w-full border-2 border-black rounded-md p-3 pt-4 pb-2 focus:outline-none peer'
-        required
+        value={value}
+        onChange={(event) => setInput(event.target.value)}
+        type="text"
+        className={`w-full border-2 rounded-md p-3 pt-4 pb-2 focus:outline-none
+          ${error ? 'border-red-500' : 'border-black'}`}
       />
-      <label className='absolute pl-1 pr-1 left-2.5 top-0 bg-white text-sm peer-focus:top-0 peer-focus:text-sm transition-all duration-200 peer-placeholder-shown:text-base peer-placeholder-shown:top-5' htmlFor="title">
+      <label className='absolute pl-1 pr-1 left-2.5 top-0 bg-white text-sm'>
         {placeholder}
       </label>
+
+      {error && (
+        <p className="text-red-500 text-xs mt-1">{error}</p>
+      )}
     </div>
-  )
-}
+  );
+};
