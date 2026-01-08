@@ -10,7 +10,7 @@ import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from "../Firebase/Firebase"
 
 const Login = ({ toggleModal, status }) => {
-    const handleClick = async()=>{
+    const handleClick = async () => {
         try {
             const result = await signInWithPopup(auth, provider)
             toggleModal()
@@ -21,113 +21,102 @@ const Login = ({ toggleModal, status }) => {
     }
     return (
         <div>
-            <Modal show={status} onClick={toggleModal}
+            
+            <Modal
+                show={status}
+                onClick={toggleModal}
                 size="md"
-                popup={true}
+                popup
                 position="center"
-                className="bg-black bg-opacity-50 flex items-center justify-center"
+                className="bg-black bg-opacity-50"
                 theme={{
                     content: {
-                        base: "relative w-[440px] max-w-xs mx-auto p-4 md:h-auto",
-                        inner:
-                            "relative flex flex-col rounded-lg bg-white shadow dark:bg-grey-700 ",
+                        base: "relative w-[440px] max-w-xs mx-auto p-0",
+                        inner: "relative flex flex-col rounded-lg bg-white shadow",
                     },
-                }}>
+                }}
+            >
                 <div
-                    onClick={(event) => event.stopPropagation()}
-                    className="p-6 pl-2 pr-2 bg-white"
+                    onClick={(e) => e.stopPropagation()}
+                    className="relative bg-white px-4 pt-6"
                 >
                     <img
-                        className="w-6 absolute z-10 top-4 right-4 cursor-pointer"
-                        onClick={toggleModal}
                         src={close}
-                        alt=""
+                        alt="close"
+                        className="w-6 absolute top-4 right-4 cursor-pointer z-10"
+                        onClick={toggleModal}
                     />
+
                     <Carousel
-                        slide={false}
+                        slide
+                        draggable={false}
+                        className="h-48 overflow-hidden"
                         theme={{
                             indicators: {
-                                active: {
-                                    off: "bg-gray-300",
-                                    on: "bg-teal-300",
-                                },
+                                active: { off: "bg-gray-300", on: "bg-teal-300" },
                                 base: "h-2 w-2 rounded-full",
                                 wrapper:
-                                    "absolute bottom-2 left-1/2 flex -translate-x-1/2 space-x-3",
-                            },
-                            scrollContainer: {
-                                base: "flex h-full snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth",
-                                snap: "snap-x",
+                                    "absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-3",
                             },
                             control: {
                                 base: "inline-flex items-center justify-center bg-transparent",
-                                icon: "w-8 text-black dark:text-black",
+                                icon: "w-6 text-black",
                             },
-                        }}
-                        onClick={(event) => {
-                            event.stopPropagation();
-                        }}
-                        className="w-full h-48 pb-5 rounded-none"
-                    >
+                            scrollContainer: {
 
-                        <div className="flex flex-col items-center justify-center">
-                            <img className="w-24 pb-5" src={guitar} alt="Car Image 1" />
-                            <p
-                                style={{ color: "#002f34" }}
-                                className=" w-60 sm:w-72 text-center pb-5 font-semibold"
-                            >
-                                Help us become one of the safest place to buy and sell.
+                            }
+                        }}
+                    >
+                        <div className="w-full flex-shrink-0 flex flex-col items-center justify-center text-center">
+                            <img src={guitar} className="w-24 mb-4" />
+                            <p className="w-64 font-semibold text-[#002f34]">
+                                Help us become one of the safest places to buy and sell.
                             </p>
                         </div>
-                        <div className="flex flex-col items-center justify-center">
-                            <img className="w-24 pb-5" src={love} alt="Car Image 2" />
-                            <p
-                                style={{ color: "#002f34" }}
-                                className=" w-60 sm:w-72 text-center pb-5 font-semibold"
-                            >
+
+                        <div className="w-full flex-shrink-0 flex flex-col items-center justify-center text-center">
+                            <img src={love} className="w-24 mb-4" />
+                            <p className="w-64 font-semibold text-[#002f34]">
                                 Close deals from the comfort of your home.
                             </p>
                         </div>
-                        <div className="flex flex-col items-center justify-center">
-                            <img className="w-24 pb-5" src={avatar} alt="Car Image 3" />
-                            <p
-                                style={{ color: "#002f34" }}
-                                className=" w-60 sm:w-72 text-center pb-5 font-semibold"
-                            >
+
+                        <div className="w-full flex-shrink-0 flex flex-col items-center justify-center text-center">
+                            <img src={avatar} className="w-24 mb-4" />
+                            <p className="w-64 font-semibold text-[#002f34]">
                                 Keep all your favorites in one place.
                             </p>
                         </div>
                     </Carousel>
                 </div>
+
                 <ModalBody
-                    className="bg-white h-auto p-4 rounded-none "
-                    onClick={(event) => {
-                        event.stopPropagation();
-                    }}
+                    onClick={(e) => e.stopPropagation()}
+                    className="bg-white px-6 pb-6"
                 >
-                    <div className="p-6 pt-0">
-                        <div className="flex items-center justify-center rounded-md border-2 border-solid border-grey-300 p-5 relative h-8 cursor-pointer active:bg-teal-100" onClick={handleClick}>
-                            <img className="w-7 absolute left-2 " src={google} alt="" />
-                            <p className="text-sm text-grey-500">continue with google</p>
-                        </div>
-                        <div className="pt-5 flex flex-col items-center justify-center">
-                            <p className="font-se,ibold text-sm">or</p>
-                            <p className="font-bold text-sm pt-3 underline underline-offset-4">
-                                Login With Email
-                            </p>
-                        </div>
-                        <div className="pt-10 sm:pt-20 flex flex-col items-center justify-center">
-                            <p className="text-xs">
-                                {" "}
-                                All your personal details are safe with us.
-                            </p>
-                            <p className="text-x5 pt-5 text-center">
-                                If you continue, you are accepting{" "}
-                                <span className="text-blue-600">
-                                    OLX Terms and Conditions and Privacy Policy
-                                </span>
-                            </p>
-                        </div>
+                    <div
+                        onClick={handleClick}
+                        className="relative flex items-center justify-center border-2 rounded-md h-10 cursor-pointer active:bg-teal-100"
+                    >
+                        <img src={google} className="w-6 absolute left-3" />
+                        <p className="text-sm">continue with google</p>
+                    </div>
+
+                    <div className="mt-4 text-center">
+                        <p className="text-sm">or</p>
+                        <p className="font-bold underline mt-2 cursor-pointer">
+                            Login With Email
+                        </p>
+                    </div>
+
+                    <div className="mt-10 text-center text-xs">
+                        <p>All your personal details are safe with us.</p>
+                        <p className="mt-4">
+                            If you continue, you are accepting{" "}
+                            <span className="text-blue-600">
+                                OLX Terms and Conditions and Privacy Policy
+                            </span>
+                        </p>
                     </div>
                 </ModalBody>
             </Modal>
