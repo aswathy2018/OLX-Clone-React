@@ -1,35 +1,38 @@
-import { collection ,getDocs } from "firebase/firestore";
-import { createContext, useContext, useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { createContext, useEffect, useState } from "react";
 import { fireStore } from "../Firebase/Firebase";
 
+export const ItemsContext = createContext({
+  items: [],
+  setItems: () => {},
+});
 
-const Context =createContext(null)
-export const ItemsContext =()=>useContext(Context)
-export const ItemContextProvider =({children})=>{
-    const [items,setItems] =useState(null)
+export const ItemContextProvider = ({ children }) => {
+  const [items, setItems] = useState([]);
 
-    useEffect(()=>{
-        const fetchItemsFromFireStore =async ()=>{
-            try {
-                const productsCollection = collection(fireStore,'products')
-                const productsSnapshot = await getDocs(productsCollection)
-                const productsList =productsSnapshot.docs.map(doc=>({
-                    id:doc.id,
-                    ...doc.data()
-                }))
-                setItems(productsList)
-            } catch (error) {
-                console.log('error feching products',error);
-            }
-        }
-        fetchItemsFromFireStore()
-    },[])
+  useEffect(() => {
+    const fetchItemsFromFireStore = async () => {
+      try {
+        const productsCollection = collection(fireStore, "products");
+        const productsSnapshot = await getDocs(productsCollection);
 
-    return(
-        <>
-        <Context.Provider value={{items,setItems}}>
-            {children}
-        </Context.Provider>
-        </>
-    )
-}
+        const productsList = productsSnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setItems(productsList);
+      } catch (error) {
+        console.log("error fetching products", error);
+      }
+    };
+
+    fetchItemsFromFireStore();
+  }, []);
+
+  return (
+    <ItemsContext.Provider value={{ items, setItems }}>
+      {children}
+    </ItemsContext.Provider>
+  );
+};

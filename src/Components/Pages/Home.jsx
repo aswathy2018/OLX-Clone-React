@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Navbar from '../Navbar/Navbar'
 import Login from '../Modal/Login'
 import Sell from '../Modal/Sell'
@@ -19,19 +19,20 @@ const Home = () => {
     setModalSell(!openModalSell)
   }
 
-  const itemsCtx = ItemsContext();
+  const itemsCtx = useContext(ItemsContext)
 
-  useEffect(() => {
-    const getItems = async() => {
-      const datas = await FetchFromFireStore();
-      itemsCtx ?.setItems(datas)
-    }
-    getItems();
-  }, [])
+  // useEffect(() => {
+  //   const getItems = async() => {
+  //     const datas = await FetchFromFireStore();
+  //     itemsCtx ?.setItems(datas)
+  //   }
+  //   getItems();
+  // }, [])
 
   useEffect(()=>{
     console.log('Updated Items: ', itemsCtx.items);
   }, [itemsCtx.items])
+  
   return (
     <div>
       <Navbar toggleModal = {toggleModal} toggleModalSell = {toggleModalSell}/>

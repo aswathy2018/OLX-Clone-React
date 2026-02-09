@@ -85,7 +85,7 @@ const Navbar = (props) => {
                   >
                     My Ads
                   </p>
-
+                  
                   <p
                     onClick={() => {
                       signOut(auth)

@@ -183,6 +183,9 @@ const Sell = (props) => {
         });
       }
 
+      const updatedItems = await FetchFromFireStore();
+      setItems(updatedItems);
+
       setTitle('');
       setCategory('');
       setPrice('');

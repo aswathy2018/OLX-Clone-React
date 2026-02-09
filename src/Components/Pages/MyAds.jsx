@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { collection, query, where, getDocs, deleteDoc, doc } from "firebase/firestore"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth, fireStore } from "../Firebase/Firebase"
@@ -15,7 +15,7 @@ const MyAds = () => {
     const [openModal, setModal] = useState(false)
     const [openModalSell, setModalSell] = useState(false)
 
-    const itemsCont = ItemsContext()
+    const itemsCont = useContext(ItemsContext);
 
     const toggleModal = () => setModal(!openModal)
     const toggleModalSell = () => setModalSell(!openModalSell)
