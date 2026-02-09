@@ -21,14 +21,6 @@ const Home = () => {
 
   const itemsCtx = useContext(ItemsContext)
 
-  // useEffect(() => {
-  //   const getItems = async() => {
-  //     const datas = await FetchFromFireStore();
-  //     itemsCtx ?.setItems(datas)
-  //   }
-  //   getItems();
-  // }, [])
-
   useEffect(()=>{
     console.log('Updated Items: ', itemsCtx.items);
   }, [itemsCtx.items])
